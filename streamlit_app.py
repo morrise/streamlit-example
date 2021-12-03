@@ -117,8 +117,6 @@ def plot_functionaltests(df):
         plt.show()
         st.pyplot(fig)
 
-with header:
-
 with dataset:
     uploadedFile = st.file_uploader("Upload CSV data", type=['csv'], accept_multiple_files=False, key="fileUploader")
     if uploadedFile is not None:
