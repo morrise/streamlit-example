@@ -2,13 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 header = st.container()
 dataset = st.container()
 features = st.container()
 modelTraining = st.container()
-
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 def plot_quicktest(powertest):
     leftside = ['OvenTemp', 'ToolTemp', 'SubbusI']
@@ -119,10 +118,8 @@ def plot_functionaltests(df):
         st.pyplot(fig)
 
 with header:
-    st.title('Welcom to my project!')
 
 with dataset:
-    st.header("This is the dataset!")
     uploadedFile = st.file_uploader("Upload CSV data", type=['csv'], accept_multiple_files=False, key="fileUploader")
     if uploadedFile is not None:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
