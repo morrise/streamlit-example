@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-header = st.beta_container()
-dataset = st.beta_container()
-features = st.beta_container()
-modelTraining = st.beta_container()
+header = st.container()
+dataset = st.container()
+features = st.container()
+modelTraining = st.container()
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
