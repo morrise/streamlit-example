@@ -131,15 +131,13 @@ with dataset:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
         #st.write(df.head())
         df.columns = df.columns.str.strip()
-        
-        st.write(df.nunique()[1])
-        #st.write(df.shape())
                 
         if ((df.shape[1]!=34) | (df.shape[0]<=2) | (columnset.issubset(df.columns)==False)): 
             st.write('CSV structure not recognized!')
         else:
             st.write('All required columns were found!')
             lastrun = df['RunNumber'].e.iat[-1]
+            st.write('Plotting for RUN :',lastrun)
             df = df.loc[df['RunNumber'] == lastrun]
             plot_functionaltests(df)
 
