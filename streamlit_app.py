@@ -48,7 +48,7 @@ def show_powertest(df):
     displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
        'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
        'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
-    displayresult   
+    st.write(displayresult)   
     
 def plot_functionaltests(df):
     nooftemperature = df.nunique()[4]
@@ -135,8 +135,8 @@ with dataset:
         df.columns = df.columns.str.strip()
         
         if ((df.shape[1]!=34) & (df.shape[0]<2) & (columnset.issubset(df.columns)!=True)): 
-            display(HTML('<p style="color:red">CSV structure not recognized! <p>'))
+            st.write('<p style="color:red">CSV structure not recognized! <p>')
         else:
-            display(HTML('<p style="color:green">All required columns were found!<p>'))
+            st.write('<p style="color:green">All required columns were found!<p>')
             plot_functionaltests(df)
 
