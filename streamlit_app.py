@@ -42,13 +42,6 @@ def plot_quicktest(powertest):
     #pdf.savefig()  # saves the current figure into a pdf page
     plt.show()
     st.pyplot(fig)
-
-def show_powertest(df):
-    powertestresult = df.loc[ (df['TestID']==1) & (df['TestType']==2)]
-    displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
-       'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
-       'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
-    st.table(displayresult)   
     
 def plot_functionaltests(df):
     nooftemperature = df.nunique()[4]
@@ -60,8 +53,14 @@ def plot_functionaltests(df):
     testkeys.sort()
     #st.write(testkeys)
     powertest = df.loc[(df['TestType'] == 1) & (df['TestID'] == 1)]
+    powertestresult = df.loc[ (df['TestID']==1) & (df['TestType']==2)]
+    displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
+       'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
+       'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
+    st.write(displayresult)   
+    
     plot_quicktest(powertest)
-    show_powertest(df)
+     
     for ts in range(2,10):
         st.write(testnames[ts])
         bwtestresult = df.loc[(df['TestID']==ts) & (df['TestType']==2)].copy()
