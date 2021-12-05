@@ -130,7 +130,7 @@ with dataset:
     if uploadedFile is not None:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
         #st.write(df.head())
-        lastrun = df['RunNumber'].e.iat[-1]
+        lastrun = df['RunNumber'].unique()[-1]
         df = df.loc[df['RunNumber'] == lastrun]
         df.columns = df.columns.str.strip()
         
