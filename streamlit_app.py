@@ -122,7 +122,7 @@ with dataset:
     if uploadedFile is not None:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
         st.write(df.head())
-        df = df.loc[df['RunNumber'] == 510]
+        df = df.loc[df['RunNumber'] == df['RunNumber'].iloc[-1]]
         df.columns = df.columns.str.strip()
         plot_functionaltests(df)
 
