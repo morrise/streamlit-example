@@ -134,8 +134,8 @@ with dataset:
         df.columns = df.columns.str.strip()
         
         if ((df.shape[1]!=34) & (df.shape[0]<2) & (columnset.issubset(df.columns)!=True)): 
-            display(HTML('<p style="color:red">CSV structure not recognized! <p>'))
+            print('<p style="color:red">CSV structure not recognized! <p>')
         else:
-            display(HTML('<p style="color:green">All required columns were found!<p>'))
+            print('<p style="color:green">All required columns were found!<p>')
             plot_functionaltests(df)
 
