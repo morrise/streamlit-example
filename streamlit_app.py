@@ -10,6 +10,18 @@ dataset = st.container()
 features = st.container()
 modelTraining = st.container()
 
+columnset = set(['RunNumber', 'Mother_SN', 'Daugther_SN', 'Cycle', 'Segment', 'TestType',
+                 'TestID', 'ELS', 'SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
+                 'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
+                 'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V',
+                 'InFrequency', 'InAmp', 'InPhase', 'ExPhase', 'StPhase', 'NearAGC',
+                 'FarAGC', 'NearRMS', 'FarRMS'])
+
+testnames = ["", "Power", "2MHz Band Width", "1MHz Band Width",
+             "2MHz Phase vs Amplitude", "1MHz Phase vs Amplitude",
+             "2MHz Corrected Amplitude", "1MHz corrected amplitude",
+             "2MHz Phase Linearity", "1MHz Phase Linearity"]
+
 def plot_quicktest(powertest):
     leftside = ['OvenTemp', 'ToolTemp', 'SubbusI']
     rightside = ['SubbusV','11V', '6.8V','DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']
@@ -39,17 +51,6 @@ def show_powertest(df):
     display(HTML(displayresult.to_html()))    
     
 def plot_functionaltests(df):
-    columnset = set(['RunNumber', 'Mother_SN', 'Daugther_SN', 'Cycle', 'Segment', 'TestType',
-                     'TestID', 'ELS', 'SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
-                     'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
-                     'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V',
-                     'InFrequency', 'InAmp', 'InPhase', 'ExPhase', 'StPhase', 'NearAGC',
-                     'FarAGC', 'NearRMS', 'FarRMS'])
-
-    testnames = ["", "Power", "2MHz Band Width", "1MHz Band Width",
-                 "2MHz Phase vs Amplitude", "1MHz Phase vs Amplitude",
-                 "2MHz Corrected Amplitude", "1MHz corrected amplitude",
-                 "2MHz Phase Linearity", "1MHz Phase Linearity"]
     nooftemperature = df.nunique()[4]
     nooftests = df.nunique()[6]
     st.write("no of temperature :", df.nunique()[4])
