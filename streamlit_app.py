@@ -132,8 +132,9 @@ with dataset:
         #st.write(df.head())
         df.columns = df.columns.str.strip()
         
-        lastrun = df['RunNumber'].unique()[-1]
-        df = df.loc[df['RunNumber'] == lastrun]
+        if (df['RunNumber'].nunique()>1):
+            st.write('More than one Run Number')
+        #df = df.loc[df['RunNumber'] == lastrun]
         
         if ((df.shape[1]!=34) & (df.shape[0]<2) & (columnset.issubset(df.columns)!=True)): 
             st.write('CSV structure not recognized!')
