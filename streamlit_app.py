@@ -136,7 +136,7 @@ with dataset:
             st.write('CSV structure not recognized!')
         else:
             st.write('All required columns were found!')
-            lastrun = df['RunNumber'].e.iat[-1]
+            lastrun = df['RunNumber'].unique()[-1]
             st.write('Plotting for RUN :',lastrun)
             df = df.loc[df['RunNumber'] == lastrun]
             plot_functionaltests(df)
