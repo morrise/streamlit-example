@@ -132,7 +132,7 @@ with dataset:
         #st.write(df.head())
         df.columns = df.columns.str.strip()
         
-        if (df['RunNumber'].nunique()>1):
+        if (df.nunique()[1]>1):
             st.write('More than one Run Number')
         #df = df.loc[df['RunNumber'] == lastrun]
         
