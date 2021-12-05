@@ -133,7 +133,7 @@ with dataset:
         df.columns = df.columns.str.strip()
         
         st.write(df.nunique()[1])
-        st.write(df.shape())
+        #st.write(df.shape())
         #df = df.loc[df['RunNumber'] == lastrun]
         
         if ((df.shape[1]!=34) | (df.shape[0]<=2) | (columnset.issubset(df.columns)==False)): 
