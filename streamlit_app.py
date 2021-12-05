@@ -132,5 +132,10 @@ with dataset:
         st.write(df.head())
         df = df.loc[df['RunNumber'] == df['RunNumber'].iloc[-1]]
         df.columns = df.columns.str.strip()
-        plot_functionaltests(df)
+        
+        if ((df.shape[1]!=34) & (df.shape[0]<2) & (columnset.issubset(df.columns)!=True)): 
+            display(HTML('<p style="color:red">CSV structure not recognized! <p>'))
+        else:
+            display(HTML('<p style="color:green">All required columns were found!<p>'))
+            plot_functionaltests(df)
 
