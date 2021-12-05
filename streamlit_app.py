@@ -57,7 +57,7 @@ def plot_functionaltests(df):
     displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
        'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
        'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
-    st.write(displayresult)   
+    st.write(powertestresult)   
     
     plot_quicktest(powertest)
      
@@ -129,7 +129,7 @@ with dataset:
     uploadedFile = st.file_uploader("Upload CSV data", type=['csv'], accept_multiple_files=False, key="fileUploader")
     if uploadedFile is not None:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
-        st.write(df.head())
+        #st.write(df.head())
         df = df.loc[df['RunNumber'] == df['RunNumber'].iloc[-1]]
         df.columns = df.columns.str.strip()
         
