@@ -30,6 +30,13 @@ def plot_quicktest(powertest):
     plt.show()
     st.pyplot(fig)
 
+def show_powertest(df):
+    powertestresult = df.loc[ (df['TestID']==1) & (df['TestType']==2)]
+    displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
+       'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
+       'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
+    display(HTML(displayresult.to_html()))    
+    
 def plot_functionaltests(df):
     columnset = set(['RunNumber', 'Mother_SN', 'Daugther_SN', 'Cycle', 'Segment', 'TestType',
                      'TestID', 'ELS', 'SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
@@ -52,7 +59,7 @@ def plot_functionaltests(df):
     #st.write(testkeys)
     powertest = df.loc[(df['TestType'] == 1) & (df['TestID'] == 1)]
     plot_quicktest(powertest)
-
+    show_powertest(df)
     for ts in range(2,10):
         st.write(testnames[ts])
         bwtestresult = df.loc[(df['TestID']==ts) & (df['TestType']==2)].copy()
