@@ -48,7 +48,7 @@ def show_powertest(df):
     displayresult = powertestresult[['SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
        'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
        'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
-    st.dataframe(displayresult)   
+    st.table(displayresult)   
     
 def plot_functionaltests(df):
     nooftemperature = df.nunique()[4]
