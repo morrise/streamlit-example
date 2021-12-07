@@ -135,11 +135,8 @@ def plot_functionaltests(df):
             plt.show()
             st.pyplot(fig)
 
-with header:
-    st.title('Welcom to my project!')
-
 with dataset:
-    st.header("This is the dataset!")
+    st.header("Upload ur test data '.csv' file!")
     uploadedFile = st.file_uploader("Upload CSV data", type=['csv'], accept_multiple_files=False, key="fileUploader")
     if uploadedFile is not None:
         df = pd.read_csv(uploadedFile, error_bad_lines=True, warn_bad_lines=False, sep=',')
