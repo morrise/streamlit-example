@@ -152,8 +152,7 @@ with dataset:
             nooftemperature = df.nunique()[4]
             nooftests = df.nunique()[6]
             temperatures = df[['Segment','TargTemp']].drop_duplicates()
-            testtemp = ""
-            st.info("Test Temperatures :", testtemp)
+            st.info("Test Temperatures")
             styler = temperatures['TargTemp'].to_frame().T
             st.dataframe(styler.assign(hack='').set_index('hack'))
             st.write("Quick test include:", "yes" if df.nunique()[5] > 1 else "no")
