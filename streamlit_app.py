@@ -2,10 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-header = st.beta_container()
-dataset = st.beta_container()
-features = st.beta_container()
-modelTraining = st.beta_container()
+st.set_option('deprecation.showPyplotGlobalUse', False)
+header = st.container()
+dataset = st.container()
+features = st.container()
+modelTraining = st.container()
 columnset = set(['RunNumber', 'Mother_SN', 'Daugther_SN', 'Cycle', 'Segment', 'TestType',
                  'TestID', 'ELS', 'SBV', 'TargSBV', 'Time', 'Date', 'TargTemp',
                  'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
@@ -22,7 +23,6 @@ nooftemperature = []
 nooftests = []
 testkeys = []
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 def plot_quicktest(powertest):
     leftside = ['OvenTemp', 'ToolTemp', 'SubbusI']
