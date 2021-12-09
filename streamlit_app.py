@@ -56,6 +56,12 @@ def plot_functionaltests(df):
        'OvenTemp', 'ToolTemp', 'SubbusV', 'SubbusI', '3.6V', '11V', '6.8V',
        'DAC_0.0V', 'DAC_1.4V', 'DAC_2.2V', 'DAC_2.8V', 'DAC_4.3V']].set_index('TargTemp').T
     #displaypowertest = displayresult.to_frame()
+    fig.patch.set_visible(False)
+    ax.axis('off')
+    ax.axis('tight')
+    ax.table(cellText=displayresult.values, colLabels=displayresult.columns, loc='center')
+    fig.tight_layout()
+    plt.show()
     st.write(displayresult)
 
     for i in range(1, nooftemperature + 1):
